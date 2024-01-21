@@ -1,0 +1,25 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "this is my react exercise ",
+
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fayiz12/React.git"
+  },
+  "keywords": [],
+  "author": "Muhammed fayiz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fayiz12/React/issues"
+  },
+  "homepage": "https://github.com/fayiz12/React#readme",
+  "devDependencies": {
+    "parcel": "^2.11.0"
+  },
+  "browserslist":["last 2 versions"]
+  
+}
