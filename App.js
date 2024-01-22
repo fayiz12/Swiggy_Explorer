@@ -28,6 +28,8 @@ const Footer=()=>{
 
 const element=(<div>
     <h1>i am element</h1>
+    {/* element inside another element */}
+    {heading1}
     {/* this is how a functional component is written inside a react element */}
     <Footer/>
 </div>)
@@ -36,4 +38,4 @@ const element=(<div>
 const root=ReactDOM.createRoot(document.getElementById('root'))
 
 // this is how the functional component is rendered
-root.render(Footer())
+root.render(element)
