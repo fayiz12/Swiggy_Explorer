@@ -33,7 +33,28 @@
 .res-container{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
    
-   
-   
+}
+
+.shimmer{
+    margin: 10px;
+    width:220px;
+    height:310px;
+    background-color: bisque;
+}
+.shimmer-container{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.img-shimmer{
+    width: 200px;
+    height: 150px;
+    background-color: #d6d6d6;
+    margin: 10px;
+}
+.login-btn{
+    margin-right: 10px;
+    padding:0px 20px;
 }
