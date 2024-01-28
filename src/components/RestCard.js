@@ -1,13 +1,20 @@
+import { Link } from "react-router-dom";
 import { CARD_URL } from "../../utils/constants";
 
 const RestCard=(pp)=>{
-    const {name,username,email}=pp
+    const {name,avgRating,imgId,id,price}=pp
     return (
         <div className="res-card">
-            <img className="res-logo" alt='reslogo' src={CARD_URL+"92c952"}></img>
-            <h3>{name}</h3>
-            <h4>{username}</h4>
-            <h5>{email} ⭐</h5>
+            <Link to={'/restraurants/'+id}>
+                <img className="res-logo" alt='reslogo' src={CARD_URL+imgId}></img>
+                <h3>{name}</h3>
+                {/* <h4>{username}</h4> */}
+            </Link>
+           
+            <div className="price-rating">
+                <h5>{price}</h5>
+                <h5>{avgRating} ⭐</h5>
+            </div>
           
         </div>
     )

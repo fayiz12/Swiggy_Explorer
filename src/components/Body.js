@@ -5,29 +5,40 @@ import Shimmer from "./Shimmer";
 
 const Body=()=>{
     const [datas,setDatas]=useState([])
+    
     useEffect(()=>{fetched_data()},[])
 
     const fetched_data=async()=>{
         try {
-            const fetched=await fetch("https://jsonplaceholder.typicode.com/users")
+            const fetched=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTIP_WEB_LISTING")
         const json=await fetched.json()
-        console.log(json)
-        setDatas(json)
+        console.log(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants)
+        setDatas(json?.data?.cards[1].card.card.gridElements.infoWithStyle.restaurants)
+        setFilter(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants)
         } catch (error) {
             console.log(error)
         } 
     }
+    const [search,setSearch]=useState("")
+    const [filter,setFilter]=useState()
    
     return datas.length===0 ? <Shimmer/> : (
         <div>
-            {/* <h2>Search Bar</h2> */}
-            <button onClick={()=>setDatas(datas.filter((data)=>data.username.length>8))}>Top Rated</button>
+            <div className="filter-ui">
+                <div className="search-ui">
+                    <input type="text" value={search} onChange={(e)=>setSearch(e.target.value)}></input>
+                    <button onClick={()=>setFilter(datas.filter((item)=>item.info.name.toLowerCase().includes(search.toLowerCase())))}>search</button>
+                </div>
+                
+                <button onClick={()=>setFilter(datas.filter((data)=>data.info.avgRating>4.4))}>Top Rated</button>
+
+            </div>
            
 
             {/* here the restraurant card */}
             <div className="res-container">
             {
-                datas.map((data)=><RestCard key={data.id} name={data.name} username={data.username} email={data.email} />)
+                filter.map((data)=><RestCard key={data.info.id} price={data.info.costForTwo} cuisines={data.info.cuisines} id={data.info.id}  name={data.info.name} avgRating={data.info.avgRating} imgId={data.info.cloudinaryImageId}/>)
             }
 
            
